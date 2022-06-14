@@ -99,7 +99,7 @@ private fun BookDetailsTopBar(
                 onFavoriteClick()
             }) {
                 Icon(
-                    imageVector = if (book.favorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                     contentDescription = "Toggle book favorite",
                     tint = MaterialTheme.colors.onSurface
                 )
