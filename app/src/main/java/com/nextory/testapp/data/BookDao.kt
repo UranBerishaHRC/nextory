@@ -8,4 +8,7 @@ import androidx.room.Query
 interface BookDao {
     @Query("SELECT * FROM book")
     fun observePagedBooks(): PagingSource<Int, Book>
+
+    @Query("SELECT * FROM book WHERE id = :id")
+    suspend fun getBookById(id: Long): Book?
 }
