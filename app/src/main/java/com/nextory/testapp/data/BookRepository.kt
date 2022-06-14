@@ -15,15 +15,22 @@ class BookRepository @Inject constructor(
         }.flow
     }
 
+    fun searchBooks(pagingConfig: PagingConfig, searchQuery: String): Flow<PagingData<Book>> {
+        return Pager(config = pagingConfig) {
+            bookDao.searchBooks(searchQuery = searchQuery)
+        }.flow
+    }
+
     suspend fun getBookById(id: Long): Book? {
         return bookDao.getBookById(id)
     }
 
-    suspend fun updateBookFavorite(id: Long, favorite:Boolean): Unit{
-        return bookDao.updateBookFavorite(id = id, favorite = favorite)
+    suspend fun updateBookFavorite(id: Long, favorite: Boolean): Unit {
+        val isFavorite = if (favorite) 1 else 0
+        return bookDao.updateBookFavorite(id = id, favorite = isFavorite)
     }
 
-    suspend fun insertBook(book:Book): Unit{
+    suspend fun insertBook(book: Book): Unit {
         return bookDao.insertBook(book)
     }
 }
