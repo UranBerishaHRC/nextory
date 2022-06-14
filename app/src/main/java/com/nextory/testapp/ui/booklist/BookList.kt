@@ -1,5 +1,6 @@
 package com.nextory.testapp.ui.booklist
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -34,6 +35,7 @@ import coil.compose.AsyncImage
 import com.nextory.testapp.R
 import com.nextory.testapp.data.Book
 import com.nextory.testapp.ui.Screen
+import com.nextory.testapp.ui.bookdetails.BookDetailsEvent
 import com.nextory.testapp.ui.components.ListItem
 import com.nextory.testapp.ui.utils.rememberFlowWithLifecycle
 
@@ -48,6 +50,7 @@ fun BookList(
         navController = navController,
         pagedBooks = pagedBooks,
         onSearchTextChanged = {
+            bookListViewModel.onEvent(BookListEvent.OnSearch( searchQuery = it))
         }
     )
 }
