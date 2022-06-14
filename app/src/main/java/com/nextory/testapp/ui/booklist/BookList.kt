@@ -8,8 +8,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -131,6 +135,13 @@ private fun BookItem(
             navController.navigate(
                 Screen.BookDetails.route +
                         "?bookId=${book.id}"
+            )
+        },
+        trailing = {
+            Icon(
+                imageVector = if (book.favorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                contentDescription = "Book Favorite",
+                tint = MaterialTheme.colors.onSurface
             )
         },
         icon = {

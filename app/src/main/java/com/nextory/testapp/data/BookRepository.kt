@@ -18,4 +18,12 @@ class BookRepository @Inject constructor(
     suspend fun getBookById(id: Long): Book? {
         return bookDao.getBookById(id)
     }
+
+    suspend fun updateBookFavorite(id: Long, favorite:Boolean): Unit{
+        return bookDao.updateBookFavorite(id = id, favorite = favorite)
+    }
+
+    suspend fun insertBook(book:Book): Unit{
+        return bookDao.insertBook(book)
+    }
 }
